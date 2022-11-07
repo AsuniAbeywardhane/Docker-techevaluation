@@ -1,0 +1,19 @@
+version: "2.0"
+services:
+  apache:
+    build: ./apache/
+    restart: always
+    ports:
+      - "8080:8000"
+    
+  web:
+    build: ./Webapp/
+    depends_on:
+      - apache
+    links: 
+      - apache
+
+  db:
+    build: ./Database-mysql/
+
+
